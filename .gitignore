@@ -1,0 +1,38 @@
+# IntelliJ IDEA
+.idea/
+workspace.xml
+shelf/
+
+# VS Code
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual Environment
+env/
+venv/
+.venv/
+
+# Django
+db.sqlite3
+*.log
+
+# Environment Variables
+.env
+
+# Build / Cache
+build/
+dist/
+
+# HTTP Requests
+httpRequests/
+
+# Datasources
+dataSources/
+dataSources.local.xml
+
+# OS Files
+.DS_Store
+Thumbs.db
