@@ -46,6 +46,7 @@ This repository is maintained for:
 * Data Structures
 * List Operations
 * Dictionary Operations
+* File Handling
 * Basic Problem Solving
 * Backend Logic Development
 * Mini Python Applications
