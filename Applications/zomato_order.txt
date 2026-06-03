@@ -1,0 +1,8 @@
+
+    ORDER ID:6239
+    CUSTOMER:Nirav
+    FOOD ITEM:Pasta
+    QUANTITY:4
+    ADDRESS:Ahmedabad
+    TOKEN NO:4
+    ORDER TIME:2026-06-03 12:49:32.653312
