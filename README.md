@@ -8,12 +8,18 @@ A structured repository containing Python web development practice programs, bac
 
 ## Contents
 
-* API Programs
-* Data Structures
+* Python Fundamentals
+* Data Structures & Algorithms
 * Functions & User Defined Functions
-* Lists & Operations
-* Python Practice Programs
-* Mini Logic-Based Applications
+* File Handling
+* API Programs
+* Django Models & ORM
+* Database Relationships (ForeignKey, ManyToMany)
+* Django Admin Customization
+* Authentication & User Permissions
+* Image Upload & Media Handling
+* Mini Django Projects
+* Logic-Based Applications
 
 ---
 
@@ -21,6 +27,8 @@ A structured repository containing Python web development practice programs, bac
 
 * Python
 * Django
+* SQLite
+* Git & GitHub
 * PyCharm
 
 ---
@@ -33,12 +41,13 @@ This repository is maintained for:
 * Django practice and learning
 * Internship tasks and exercises
 * Backend development experimentation
+* Database design and ORM implementation
 * Concept revision and implementation
 
 ---
 
 ## Topics Covered
-
+## Python
 * Python Fundamentals
 * APIs & Data Fetching
 * Functions & Parameters
@@ -50,6 +59,19 @@ This repository is maintained for:
 * Basic Problem Solving
 * Backend Logic Development
 * Mini Python Applications
+
+## Django
+* Django Project & App Structure
+* Models & ORM
+* ForeignKey Relationships
+* ManyToMany Relationships
+* Django Admin Panel
+* User Authentication & Permissions
+* Image Uploads & Media Files
+* Database Migrations
+* CRUD Operations
+* Model Relationships
+* Admin Customization
 
 ---
 
