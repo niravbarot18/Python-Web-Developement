@@ -20,6 +20,30 @@ STATUS=[
     ("inactive","INACTIVE")
 ]
 
+
+AVAILABLE_QUANTITY=[
+    ('1','1'),
+    ('2','2'),
+    ('3','3'),
+    ('4','4'),
+    ('5','5'),
+    ('6','6'),
+    ('7','7'),
+    ('8','8'),
+    ('9','9'),
+    ('10','10'),
+    ('11','11'),
+    ('12','12'),
+    ('13','13'),
+    ('14','14'),
+    ('15','15'),
+    ('16','16'),
+    ('17','17'),
+    ('18','18'),
+    ('19','19'),
+    ('20','20')
+]
+
 class Role(models.Model):
     user_typename = models.CharField(choices=USER_TYPENAME,max_length=10,verbose_name="Select User Type")
 
@@ -102,3 +126,98 @@ class ComplaintDetails(models.Model):
         return "No image"
 
 
+class Brand(models.Model):
+    brand_name = models.CharField(max_length=100)
+    brand_description = models.TextField()
+    brand_logo = models.ImageField(upload_to='photos')
+
+    def brand_image(self):
+        if self.brand_logo:
+            return mark_safe(f"<img src='{self.brand_logo.url}' width='100' />")
+        return "No Image"
+
+    def __str__(self):
+        return self.brand_name
+
+class NewFurniture(models.Model):
+    f_name = models.CharField(max_length=200,verbose_name="Furniture Name")
+    brand_name = models.ForeignKey(Brand,on_delete=models.CASCADE)
+    furniture_description = models.TextField()
+    furniture_price = models.DecimalField(max_digits=10,decimal_places=2)
+    furniture_image = models.ImageField(upload_to='photos')
+    furniture_type = models.ForeignKey(FurnitureCategory,on_delete=models.CASCADE)
+    available_quantity = models.IntegerField(choices=AVAILABLE_QUANTITY)
+
+    def furniture_photo(self):
+        if self.furniture_image:
+            return mark_safe(
+                f"<img src='{self.furniture_image.url}' width='100' />"
+            )
+        return "No Image"
+
+    def __str__(self):
+        return self.f_name
+
+class OldFurniture(models.Model):
+    old_furniture_name = models.CharField(max_length=200)
+    old_furniture_brand_name = models.ForeignKey(Brand,on_delete=models.CASCADE)
+    old_furniture_description = models.TextField()
+    old_furniture_price = models.DecimalField(max_digits=10,decimal_places=2)
+    old_furniture_image = models.ImageField(upload_to='photos')
+    old_furniture_type = models.ForeignKey(FurnitureCategory,on_delete=models.CASCADE)
+    available_quantity = models.IntegerField(choices=AVAILABLE_QUANTITY)
+
+    def old_furniture_photo(self):
+        if self.old_furniture_image:
+            return mark_safe(
+                f"<img src='{self.old_furniture_image.url}' width='100' />"
+            )
+        return "No Image"
+
+    def __str__(self):
+        return self.old_furniture_name
+
+class RentFurniture(models.Model):
+    rent_furniture_name = models.CharField(max_length=200)
+    rent_brand_name = models.ForeignKey(Brand,on_delete=models.CASCADE)
+    rent_furniture_description = models.TextField()
+    rent_furniture_price = models.DecimalField(max_digits=10,decimal_places=2)
+    rent_furniture_image = models.ImageField(upload_to='photos',)
+    rent_furniture_type = models.ForeignKey(FurnitureCategory,on_delete=models.CASCADE)
+    available_quantity = models.IntegerField(choices=AVAILABLE_QUANTITY)
+
+    def rent_furniture_photo(self):
+        if self.rent_furniture_image:
+            return mark_safe(
+                f"<img src='{self.rent_furniture_image.url}' width='100' />"
+            )
+        return "No Image"
+
+    def __str__(self):
+        return self.rent_furniture_name
+
+class NewFurnitureBuying(models.Model):
+    furniture = models.ForeignKey(NewFurniture,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    booking_datetime = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user} - {self.furniture}"
+
+class OldFurnitureBuying(models.Model):
+    old_furniture = models.ForeignKey(OldFurniture,on_delete=models.CASCADE)
+    user_booking = models.ForeignKey(User,on_delete=models.CASCADE)
+    old_booking_datetime = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user_booking} - {self.old_furniture}"
+
+class RentFurnitureOrder(models.Model):
+    rent_furniture = models.ForeignKey(RentFurniture,on_delete=models.CASCADE)
+    rent_userid = models.ForeignKey(User,on_delete=models.CASCADE)
+    rent_start_date = models.DateField()
+    rent_end_date = models.DateField()
+    rent_book_datetime = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.rent_userid} - {self.rent_furniture}"

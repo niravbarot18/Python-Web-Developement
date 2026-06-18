@@ -37,3 +37,31 @@ class FeedBackDetailsAdmin(admin.ModelAdmin):
 @admin.register(ComplaintDetails)
 class ComplaintDetailsAdmin(admin.ModelAdmin):
     list_display = ('c_name','c_detail','complaint_photo','c_by','c_on')
+
+@admin.register(Brand)
+class BrandAdmin(admin.ModelAdmin):
+    list_display = ('brand_name','brand_description','brand_image')
+
+@admin.register(NewFurniture)
+class NewFurnitureAdmin(admin.ModelAdmin):
+    list_display = ('f_name','brand_name','furniture_description','furniture_price','furniture_photo','furniture_type','available_quantity')
+
+@admin.register(OldFurniture)
+class OldFurnitureAdmin(admin.ModelAdmin):
+    list_display = ('old_furniture_name','old_furniture_brand_name','old_furniture_description','old_furniture_price','old_furniture_photo','old_furniture_type','available_quantity')
+
+@admin.register(RentFurniture)
+class RentFurnitureAdmin(admin.ModelAdmin):
+    list_display = ('rent_furniture_name','rent_brand_name','rent_furniture_description','rent_furniture_price','rent_furniture_photo','rent_furniture_type','available_quantity')
+
+@admin.register(NewFurnitureBuying)
+class NewFurnitureBuyingAdmin(admin.ModelAdmin):
+    list_display = ('furniture','user','booking_datetime')
+
+@admin.register(OldFurnitureBuying)
+class OldFurnitureAdmin(admin.ModelAdmin):
+    list_display = ('old_furniture','user_booking','old_booking_datetime')
+
+@admin.register(RentFurnitureOrder)
+class RentFurnitureOrderAdmin(admin.ModelAdmin):
+    list_display = ('rent_furniture','rent_userid','rent_start_date','rent_end_date','rent_book_datetime')
